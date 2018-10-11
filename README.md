@@ -5,6 +5,8 @@ Playing with prophet
 
 * Homepage: https://facebook.github.io/prophet/
 
+* GitHub: https://github.com/facebook/prophet/blob/master/README.md
+
 * HTML documentation: https://facebook.github.io/prophet/docs/quick_start.html
 
 * Prophet R package: https://cran.r-project.org/package=prophet
