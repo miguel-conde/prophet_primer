@@ -247,3 +247,13 @@ forecast <- predict(m, tb_data)
 plot(m, forecast)
 prophet_plot_components(m, forecast)
 dyplot.prophet(m, forecast)
+
+aux <- forecast %>% select(ds, yhat) %>% 
+  left_join(tb_data %>% select(ds, y) %>% 
+              mutate(ds = as.POSIXct(ds))) %>% 
+  mutate(residuals = y - yhat)
+
+Metrics::mape(aux$y, aux$yhat)
+r2 <- (1 - crossprod(aux$residuals) / crossprod(aux$y - mean(aux$y))) %>% 
+  as.numeric()
+r2
