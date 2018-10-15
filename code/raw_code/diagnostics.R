@@ -82,6 +82,14 @@ with(tb_data_p_by_h,
 with(tb_data_p_by_h,
      plot(horizon, coverage, type = "l"))
 
+# The coverage probability of a technique for calculating a confidence interval 
+# is the proportion of the time that the interval contains the true value of 
+# interest.
+# If all assumptions used in deriving a confidence interval are met, the nominal 
+# coverage probability (usually 95%) will equal the coverage probability
+#
+# (see https://en.wikipedia.org/wiki/Coverage_probability)
+
 # Cross validation performance metrics can be visualized with 
 # plot_cross_validation_metric, here shown for MAPE. 
 # Dots show the absolute percent error for each prediction in tb_data_cv. 
