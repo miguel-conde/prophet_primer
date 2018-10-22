@@ -257,3 +257,13 @@ Metrics::mape(aux$y, aux$yhat)
 r2 <- (1 - crossprod(aux$residuals) / crossprod(aux$y - mean(aux$y))) %>% 
   as.numeric()
 r2
+
+
+# CONTRIBUTIONS -----------------------------------------------------------
+
+m_aportes <- forecast %>% as.tibble() %>% 
+  select(-ends_with("_lower"), -ends_with("_upper"), -ends_with("_terms"), 
+         -starts_with("extra_regressors_"), -yhat) 
+
+Conento::aportes_ag(m_aportes)
+Conento::dibuja_areas(m_aportes %>% mutate(ds = as.Date(ds)))
