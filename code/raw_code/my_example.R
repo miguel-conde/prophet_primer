@@ -323,6 +323,11 @@ tb_goa   <- get_cores_data("Gasoleos") %>%
 # Fit the model
 m <- prophet(tb_goa)
 
+# m <- prophet(daily.seasonality = FALSE,
+#              weekly.seasonality = FALSE)
+# m <- add_seasonality(m, name='monthly', period=30.5, fourier.order=5)
+# m <- fit.prophet(m, tb_goa)
+
 # Make predictions
 future <- make_future_dataframe(m, periods = 24, freq = 'month')
 tail(future)
