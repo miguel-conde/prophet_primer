@@ -321,7 +321,8 @@ tb_goa   <- get_cores_data("Gasoleos") %>%
          y = gasoleo_a)
 
 # Fit the model
-m <- prophet(tb_goa)
+m <- prophet(tb_gna95, holidays = generated_holidays %>% 
+               filter(country == "Spain"))
 
 # Make predictions
 future <- make_future_dataframe(m, periods = 24, freq = 'month')
@@ -340,10 +341,13 @@ dyplot.prophet(m, forecast)
 
 
 ### PERF
+# tb_data_cv <- cross_validation(m, 
+#                                initial = 365.25*4, 
+#                                period = 365.25, 
+#                                horizon = 30, #365.25*2, 
+#                                units = 'days')
 tb_data_cv <- cross_validation(m, 
-                               initial = 365.25*4, 
-                               period = 365.25, 
-                               horizon = 365.25*2, 
+                               horizon = 365.25 / 12 * 2, 
                                units = 'days')
 head(tb_data_cv)
 tb_data_cv %>% select(cutoff) %>% unique
