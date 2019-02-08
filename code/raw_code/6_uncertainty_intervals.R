@@ -22,7 +22,7 @@ tb_data <- read.csv(here("data", "tidy_data", "example_wp_log_peyton_manning.csv
 # Fit the model
 m <- prophet(tb_data, interval.width = 0.95)
 future <- make_future_dataframe(m, periods = 365)
-forecast <- predict(m, future))
+forecast <- predict(m, future)
 
 # These intervals assume that the future will see the same frequency and 
 # magnitude of rate changes as the past. This assumption is probably not true, 
